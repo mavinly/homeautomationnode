@@ -6,12 +6,14 @@
   <script src="javascripts/angularApp.js"></script>
 </head>
 
-<body ng-app="flapperNews" ng-controller="MainCtrl">
-  <div>
+<body ng-app="doorSensorReadings" ng-controller="MainCtrl">
+
     <div ng-repeat="reading in readings">
-      {{reading}}
+      {{reading.id}}, {{reading.name}}, {{reading.open}}
     </div>
-  </div>
+
+    <button ng-click="addReading()">Post</button>
+
 </body>
 
 </html>
