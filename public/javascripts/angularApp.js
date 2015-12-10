@@ -1,10 +1,15 @@
 var app = angular.module('doorSensorReadings', ['ui.router']);
 
-app.factory('readings', [function(){
+app.factory('readings',  ['$http', function($http){
   var o = {
     readings: []
   };
-  return o;
+  
+  o.getAll = function() {
+		return $http.get('/doorsensorreadings').success(function(data) {
+			angular.copy(data, o.readings);
+		});
+	};
 }])
 
 app.controller('MainCtrl', ['$scope', 'readings', function($scope, readings){
@@ -22,16 +27,17 @@ app.controller('MainCtrl', ['$scope', 'readings', function($scope, readings){
   
 }]);
 
-app.config([
-'$stateProvider',
-'$urlRouterProvider',
-function($stateProvider, $urlRouterProvider) {
-
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/home',
       templateUrl: '/home.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      resolve: {
+        Promise: ['readings', function(readings){
+          return readings.getAll();
+        }]
+      }
     });
 
   $urlRouterProvider.otherwise('home');
