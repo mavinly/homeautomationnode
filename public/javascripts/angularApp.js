@@ -10,17 +10,13 @@ app.factory('readings',  ['$http', function($http){
 			angular.copy(data, o.readings);
 		});
 	};
+  
+  return o;
 }])
 
 app.controller('MainCtrl', ['$scope', 'readings', function($scope, readings){
-  $scope.readings = readings.readings;
-  
-  // $scope.readings = [
-  //   {id: 1, name:"Door 1", open: true},
-  //   {id: 1, name:"Door 2", open: true},
-  //   {id: 1, name:"Door 3", open: true},
-  // ];
-  
+  $scope.readings = readings.readings;  
+
   $scope.addReading = function(){
     $scope.readings.push({id: 2, name:"Door 4", open: true})
   }

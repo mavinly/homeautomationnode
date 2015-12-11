@@ -9,10 +9,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/doorsensorreadings', function(req, res, next) {
-  SensorReading.find(function(err, doorsensorreadings) {
+  SensorReading.find(function(err, sensorReading) {
     if(err){return next(err); }
     
-    res.json(SensorReading);
+    res.json(sensorReading);
   });
 });
 
