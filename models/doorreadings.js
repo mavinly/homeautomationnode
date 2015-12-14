@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
-var 
-SensorReadingSchema = new mongoose.Schema({
+var SensorReadingSchema = new mongoose.Schema({
     id: { type: Number, required: true },
     name: { type: String, required: true },
     readingdatetime: { type: Date, required: true },
