@@ -16,4 +16,13 @@ router.get('/doorsensorreadings', function(req, res, next) {
   });
 });
 
+router.post('/doorsensorreadings', function(req, res, next) {
+  var reading = new SensorReading(req.body);
+  reading.save(function(err, sensorReading){
+    if(err){return next(err);}
+    
+    res.json(reading);
+  })
+})
+
 module.exports = router;
