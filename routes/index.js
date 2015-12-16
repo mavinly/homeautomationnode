@@ -18,7 +18,7 @@ router.get('/doorsensorreadings', function(req, res, next) {
 
 router.post('/doorsensorreadings', function(req, res, next) {
   var reading = new SensorReading(req.body);
-  reading.save(function(err, sensorReading){
+  reading.save(function(err, reading){
     if(err){return next(err);}
     
     res.json(reading);

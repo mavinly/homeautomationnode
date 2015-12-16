@@ -11,6 +11,12 @@ app.factory('readings',  ['$http', function($http){
 		});
 	};
   
+  o.create = function(readings) {
+    return $http.post('/doorsensorreadings', readings).success(function(data){
+      o.readings.push(data);
+    })
+  }
+  
   return o;
 }])
 
@@ -18,7 +24,7 @@ app.controller('MainCtrl', ['$scope', 'readings', function($scope, readings){
   $scope.readings = readings.readings;  
 
   $scope.addReading = function(){
-    $scope.readings.push({id: 2, name:"Door 4", open: true})
+    readings.create({id: 2, name:"Door 5", open: true, readingdatetime: Date.now()})
   }
   
 }]);
