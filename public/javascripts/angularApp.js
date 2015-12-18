@@ -18,7 +18,8 @@ app.controller('MainCtrl', ['$scope', 'readings', function($scope, readings){
   $scope.readings = readings.readings;  
 
   $scope.addReading = function(){
-    $scope.readings.push({id: 2, name:"Door 4", open: true})
+    if($scope.body == ''){return;}
+    $scope.post.
   }
   
 }]);
