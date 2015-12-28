@@ -24,12 +24,7 @@ app.controller('MainCtrl', ['$scope', 'readings', function($scope, readings){
   $scope.readings = readings.readings;  
 
   $scope.addReading = function(){
-<<<<<<< HEAD
     readings.create({id: 2, name:"Door 5", open: true, readingdatetime: Date.now()})
-=======
-    if($scope.body == ''){return;}
-    $scope.post.
->>>>>>> origin/master
   }
   
 }]);
