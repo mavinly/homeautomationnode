@@ -14,8 +14,6 @@ UserSchema.methods.setPassword = function(password){
   this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 };
 
-mongoose.model('User', UserSchema);
-
 UserSchema.methods.generateJWT = function() {
 	var today = new Date();
 	var exp = new Date(today);
@@ -27,3 +25,6 @@ UserSchema.methods.generateJWT = function() {
     exp: parseInt(exp.getTime() / 1000),
   }, 'SECRET');
 }
+
+mongoose.model('User', UserSchema);
+

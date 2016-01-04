@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 require('./models/doorreadings');
-require('./models/Users');
+require('./models/user');
 require('./config/passport');
 mongoose.connect('mongodb://admin:ecmj0803@ds054298.mongolab.com:54298/sample');
 

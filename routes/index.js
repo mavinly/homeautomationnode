@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/doorsensorreadings', function(req, res, next) {
+router.get('/doorsensorreadings', auth, function(req, res, next) {
   SensorReading.find(function(err, sensorReading) {
     if(err){return next(err); }
     
@@ -21,7 +21,7 @@ router.get('/doorsensorreadings', function(req, res, next) {
   });
 });
 
-router.post('/doorsensorreadings', function(req, res, next) {
+router.post('/doorsensorreadings', auth, function(req, res, next) {
   var reading = new SensorReading(req.body);
   reading.save(function(err, reading){
     if(err){return next(err);}
